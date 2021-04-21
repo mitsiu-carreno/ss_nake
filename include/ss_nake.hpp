@@ -5,11 +5,17 @@
 #include "directions.hpp"
 #include "coords.hpp"
 
-struct Snake{
-	bool alive = true;
-  int length;
-  Direction direction;
-  Coords position;
-};
+namespace ssnake{
+  struct Snake{
+	  bool alive = true;
+    int length;
+    Direction direction;
+    Coords position;
+    float speed = 0.3;
+  };
+
+  Snake* CreateSsnake();
+  void MoveSsnake(Snake*);
+}
 
 #endif

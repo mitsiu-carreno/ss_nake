@@ -1,49 +1,29 @@
-#include "constants.hpp"
+#include "utils.hpp"
+#include "ss_nake.hpp"
 #include <time.h>   // clock_t, clock, CLOCKS_PER_SEC
 #include <ncurses.h>
-
-/*
-void MainLoop(){
-  clock_t t;
-  t = clock();
-
-  size_t size = 100000;
-  int *pInt = new int[size];
-  for(size_t i = 0; i<size; ++i){
-    pInt[i] = 100;
-  }
-  t = clock() - t;
-  //printw("Time %d miliseconds\n", t);
-  //printw("%d clocks per second\n", CLOCKS_PER_SEC);
-  //printw("time: %d seconds\n", t*1.0/CLOCKS_PER_SEC);
-  //getch();
-  if(t > 10){
-    printw("in");
-  }else{
-    printw("out");
-  }
-    printw("%d\n", t);
-    printw("%f\n", t*1.0/CLOCKS_PER_SEC);
-    getch();
-
-  delete []pInt;
-}
-
-*/
+#include <tuple>
 
 void MainLoop(){
+  int screen_width, screen_height;
+  std::tie(screen_width, screen_height) = utils::GetScreenSize();
+
+  ssnake::Snake* ssnake = ssnake::CreateSsnake();
+  ssnake->position.x = screen_width/2;
+  ssnake->position.y = screen_height/2;
   int steps = 0;
-  int row = 10, col = 10;
-  while(steps < 5){
+
+  while(steps < 20){
     clock_t begin_time = clock();
     double elapsed_seconds = 0;
-    while(elapsed_seconds < 0.5){
+    while(elapsed_seconds < ssnake->speed){
       elapsed_seconds = double(clock() - begin_time)/CLOCKS_PER_SEC;
     }
-    mvaddch(3,steps, 'X');
+    mvaddch(ssnake->position.y, ssnake->position.x, 'X');
     refresh();
-    ++col;
-    ++row;
     ++steps;
+    MoveSsnake(ssnake);
+    //++ssnake->position.x;
   }
+  delete ssnake;
 } 

@@ -5,7 +5,7 @@ enum class Direction{
   top,
   right,
   bottom,
-  down,
+  left,
 };
 
 #endif

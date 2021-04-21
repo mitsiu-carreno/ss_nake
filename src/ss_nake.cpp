@@ -10,12 +10,30 @@ namespace ssnake{
 	Snake* CreateSsnake(){
 		Snake* ssnake = new Snake;
 
-		ssnake->alive 		= true;
 		ssnake->length 		= Constants::KInitLength;
 		ssnake->direction = Direction::right;
-		//ssnake->position 	= utils::GetCenterScreen();
-    ssnake->position  = {10, 10};
     return ssnake;
 	}	
-}
+  
+  // Change ssnake position based on current direction
+  void MoveSsnake(Snake* ssnake){
+    switch(ssnake->direction){
+      case Direction::top:
+        --ssnake->position.y;
+        break;
+      case Direction::bottom:
+        ++ssnake->position.y;
+        break;
+      case Direction::left:
+        --ssnake->position.x;
+        break;
+      case Direction::right:
+        ++ssnake->position.x;
+        break;
+      default:
+        // WTF! Lets get this guy back on track, still we are lossing one loop
+        ssnake->direction = Direction::right;
+    }  
+  }
+} 
 

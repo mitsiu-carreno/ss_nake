@@ -1,10 +1,10 @@
 #ifndef UTILS_H
 #define UTILS_H
 
-#include "coords.hpp"
+#include <tuple>
 
 namespace utils{
-	Coords GetCenterScreen();
+  std::tuple<int, int> GetScreenSize();
 };
 
 #endif

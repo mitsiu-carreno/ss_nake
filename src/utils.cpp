@@ -9,3 +9,14 @@ namespace utils{
 	}
 }
 */
+
+#include <ncurses.h>
+#include <tuple>
+
+namespace utils{
+  std::tuple<int, int> GetScreenSize(){
+    int screen_height, screen_width;
+    getmaxyx(stdscr, screen_height, screen_width);
+    return std::make_tuple(screen_width, screen_height);
+  }
+}
