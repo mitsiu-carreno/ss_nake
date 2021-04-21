@@ -31,8 +31,9 @@ namespace ssnake{
         ++ssnake->position.x;
         break;
       default:
-        // WTF! Lets get this guy back on track, still we are lossing one loop
+        // WTF! Lets get this guy back on track
         ssnake->direction = Direction::right;
+        MoveSsnake(ssnake);
     }  
   }
 } 

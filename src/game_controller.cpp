@@ -8,6 +8,8 @@ void MainLoop(){
   int screen_width, screen_height;
   std::tie(screen_width, screen_height) = utils::GetScreenSize();
 
+  curs_set(0);
+
   ssnake::Snake* ssnake = ssnake::CreateSsnake();
   ssnake->position.x = screen_width/2;
   ssnake->position.y = screen_height/2;
