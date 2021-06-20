@@ -40,11 +40,12 @@ INCLUDE_LIST 	:= $(patsubst include%,-I include%,$(HEADER_DIRECTORY_LIST))
 
 #ggdb3 helps analyse with valgrind
 CFLAGS=-c -std=c++1z -Wall -Werror -g -ggdb3
+CFLAGS_LINKER=-lpthread
 
 $(EXEC_TARGET): $(O_FILE_FULL_PATH_LIST)
 	@mkdir -p $(EXEC_TARGET)
 	@echo "Linking..."
-	@echo "		$(CC) $^ $(LIBS) -o $(EXEC_FULL_PATH)"; $(CC) $^ $(LIBS) -o $(EXEC_FULL_PATH);
+	@echo "		$(CC) $^ $(LIBS) -o $(EXEC_FULL_PATH) $(CFLAGS_LINKER)"; $(CC) $^ $(LIBS) -o $(EXEC_FULL_PATH) $(CFLAGS_LINKER);
 	@echo "Build complete, executing..."
 	@echo ""
 	./$(EXEC_FULL_PATH)
