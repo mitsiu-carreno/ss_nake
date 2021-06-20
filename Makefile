@@ -16,7 +16,7 @@ BUILD_TARGET := build
 EXEC_TARGET	:= bin
 
 # Executable 
-EXEC_TARGET_NAME := sud0ku
+EXEC_TARGET_NAME := ss_nake
 EXEC_FULL_PATH := $(EXEC_TARGET)/$(EXEC_TARGET_NAME)
 
 # Code properties

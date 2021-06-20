@@ -1,18 +1,20 @@
+#include "thread.hpp"
 #include "game_controller.hpp"
 #include <ncurses.h>
 
-bool initGame(){
-	int screen_height, screen_width;
-	getmaxyx(stdscr, screen_height, screen_width);
-  printw("%d, %d", screen_height, screen_width);
-  return true;
+void InputTest(){
+  for(int i = 0; i<30; ++i){
+    getch();
+    printw("in\n");
+  }
 }
-
 
 int main(){
   initscr();  // start curses mode
 
-  MainLoop();
+  //thread::HandleThreads();
+  game_controller::MainLoop();
+  //InputTest();
 
   endwin();   // end curses mode
   return 0;

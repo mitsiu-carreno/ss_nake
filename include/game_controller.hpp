@@ -1,6 +1,8 @@
 #ifndef GAME_CONTROLLER_H
 #define GAME_CONTROLLER_H
 
-void MainLoop();
+namespace game_controller{
+  void MainLoop();
+}
 
 #endif
