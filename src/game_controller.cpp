@@ -1,5 +1,6 @@
 #include "utils.hpp"
 #include "ss_nake.hpp"
+#include "input_handler.hpp"
 #include <time.h>   // clock_t, clock, CLOCKS_PER_SEC
 #include <ncurses.h>
 
@@ -25,6 +26,7 @@ namespace game_controller{
       mvaddch(ssnake->position.y, ssnake->position.x, 'X');
       refresh();
       ++steps;
+      ssnake->direction = input_handler::PopBuffer(ssnake->direction);
       MoveSsnake(ssnake);
       //++ssnake->position.x;
     }
